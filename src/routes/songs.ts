@@ -5,12 +5,14 @@ const router = Router();
 
 // Obtener todas las canciones
 router.get("/", async (_, res) => {
+    console.log("📩 Llego un GET a /tasks");
   const songs = await Song.find().sort({ createdAt: -1 });
   res.json(songs);
 });
 
 // Agregar canción
 router.post("/", async (req, res) => {
+   console.log("📩 Llego un POST a /tasks con body:", req.body);
   const song = await Song.create(req.body);
   res.status(201).json(song);
 });
